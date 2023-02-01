@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { StarIcon } from "react-native-heroicons/solid";
 import { MapPinIcon } from "react-native-heroicons/outline";
+import { urlFor } from "../../services/sanity";
 
 export function RestaurantCard({
   id,
@@ -18,13 +19,13 @@ export function RestaurantCard({
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      className="mr-3 bg-white shadow rounded"
+      className="mr-3 w-72 bg-white shadow rounded"
     >
       <Image
         source={{
-          uri: imgUrl,
+          uri: urlFor(imgUrl).auto('format').fit('max').width(1000).url(),
         }}
-        className="h-36 w-64 rounded"
+        className="h-48 w-auto min-w-fit rounded"
       />
 
       <View className="px-3 pb-4">
@@ -33,7 +34,8 @@ export function RestaurantCard({
         <View className="flex-row items-center space-x-1 ">
           <StarIcon color="#fab206" opacity={0.5} size={22} />
           <Text className="text-xs text-gray-500">
-            <Text className="text-green-500">{rating}</Text> . {genre}
+            <Text className="text-green-500">{rating.toFixed(1)}</Text> .{" "}
+            {genre}
           </Text>
         </View>
 
