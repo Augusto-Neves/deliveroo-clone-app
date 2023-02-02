@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -14,13 +14,7 @@ import sanityClient from "../services/sanity";
 
 export function HomeScreen() {
   const navigation = useNavigation();
-  const [featuredCategories, setFeaturedCategories] = useState([]); 
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
+  const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useEffect(() => {
     sanityClient
