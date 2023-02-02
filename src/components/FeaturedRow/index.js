@@ -6,6 +6,7 @@ import { RestaurantCard } from "../RestaurantCard";
 
 export function FeaturedRow({ id, title, description }) {
   const [restaurants, setRestaurants] = useState([]);
+
   useEffect(() => {
     sanityClient
       .fetch(
@@ -26,7 +27,7 @@ export function FeaturedRow({ id, title, description }) {
       .then((result) => setRestaurants(result?.restaurants))
       .catch((err) => console.log(err));
   }, []);
-
+  
   return (
     <View>
       <TouchableOpacity activeOpacity={0.7}>
@@ -54,8 +55,10 @@ export function FeaturedRow({ id, title, description }) {
             genre={restaurant.type.name}
             rating={restaurant.rating}
             long={restaurant.long}
-            latitude={restaurant.lat}
+            lat={restaurant.lat}
             imgUrl={restaurant.image.asset._ref}
+            short_description={restaurant.short_description}
+            dishes={restaurant.dishes}
           />
         ))}
       </ScrollView>
