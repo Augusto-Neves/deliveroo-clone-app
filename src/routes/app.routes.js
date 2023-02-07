@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TransitionSpecs } from "@react-navigation/stack";
 import { BasketScreen } from "../screens/BasketScreen";
+import { DeliveryScreen } from "../screens/DeliveryScreen";
 import { HomeScreen } from "../screens/HomeScreen";
 import { PreparingOrderScreen } from "../screens/PreparingOrderScreen";
 import { RestaurantScreen } from "../screens/RestaurantScreen";
@@ -26,6 +27,13 @@ export function AppRoutes() {
       <Screen
         name="preparingOrder"
         component={PreparingOrderScreen}
+        options={{
+          presentation: "fullScreenModal",
+        }}
+      />
+      <Screen
+        name="delivery"
+        component={DeliveryScreen}
         options={{
           presentation: "fullScreenModal",
         }}
