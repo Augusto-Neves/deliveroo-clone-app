@@ -17,11 +17,14 @@ export function Basket() {
       <TouchableOpacity
         activeOpacity={0.9}
         className="bg-[#00CCBB] mx-5 p-4 rounded-lg flex-row items-center space-x-1"
+        onPress={() => navigation.navigate("basket")}
       >
         <Text className="text-white font-extrabold text-lg bg-[#01a286] py-1 px-3 rounded">
           {items.length}
         </Text>
-        <Text className="flex-1 text-white font-extrabold text-lg text-center">View Basket</Text>
+        <Text className="flex-1 text-white font-extrabold text-lg text-center">
+          View Basket
+        </Text>
         <Text>
           <CurrencyFormat
             value={basketTotalPrice}

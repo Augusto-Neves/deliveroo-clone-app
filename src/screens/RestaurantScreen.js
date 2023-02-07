@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { urlFor } from "../services/sanity";
@@ -11,9 +11,14 @@ import {
 import { QuestionMarkCircleIcon } from "react-native-heroicons/outline";
 import { DishRow } from "../components/DishRow";
 import { Basket } from "../components/Basket";
+import { useSelector, useDispatch } from "react-redux";
+import { selectedBasketItems } from "../store/reducers/basketSlice";
+import { setRestaurant } from "../store/reducers/restaurantSlice";
 
 export function RestaurantScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const {
     params: {
       id,
@@ -28,6 +33,22 @@ export function RestaurantScreen() {
       lat,
     },
   } = useRoute();
+  const items = useSelector(selectedBasketItems);
+
+  useEffect(() => {
+    dispatch(setRestaurant({
+      id,
+      imgUrl,
+      title,
+      rating,
+      genre,
+      address,
+      short_description,
+      dishes,
+      long,
+      lat,
+    }))
+  }, [dispatch]);
 
   return (
     <>
@@ -79,7 +100,7 @@ export function RestaurantScreen() {
         </View>
 
         {/* Menu */}
-        <View className="pb-36">
+        <View className={items.length > 0 && "pb-28"}>
           <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
           {/* Dish rows */}
 
@@ -95,7 +116,7 @@ export function RestaurantScreen() {
           ))}
         </View>
       </ScrollView>
-      <Basket />
+      {items.length > 0 && <Basket />}
     </>
   );
 }

@@ -41,7 +41,7 @@ export function HomeScreen() {
       <View className="flex-row pb-3 items-center space-x-2 px-4">
         <Image
           source={{
-            uri: "https://www.seekpng.com/png/detail/251-2519834_delivery-rider-delivery-order-png.png",
+            uri: "https://links.papareact.com/wru",
           }}
           className="h-7 w-7 bg-gray-300 p-4 rounded-full"
         />
