@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/deliveroo-Riders.gif",
+      "image": "./assets/deliveroo-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#00CCBB"
     },
