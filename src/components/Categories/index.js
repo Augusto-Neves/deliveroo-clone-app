@@ -26,6 +26,7 @@ export function Categories() {
       {categories?.map((category) => (
         <CategoryCard
           key={category._id}
+          id={category._id}
           title={category.name}
           imgUrl={category.image.asset._ref}
         />
