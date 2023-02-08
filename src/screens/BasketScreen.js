@@ -81,7 +81,7 @@ export function BasketScreen() {
                   displayType="text"
                   prefix="$"
                   renderText={(value) => (
-                    <Text className=" text-gray-600">{value}</Text>
+                    <Text className=" text-gray-600">{value.replace('.', ',')}</Text>
                   )}
                 />
               </Text>
@@ -105,7 +105,7 @@ export function BasketScreen() {
               displayType="text"
               prefix="$"
               renderText={(value) => (
-                <Text className="text-gray-400">{value}</Text>
+                <Text className="text-gray-400">{value.replace('.', ',')}</Text>
               )}
             />
           </View>
@@ -117,7 +117,7 @@ export function BasketScreen() {
               displayType="text"
               prefix="$"
               renderText={(value) => (
-                <Text className="text-gray-400">{value}</Text>
+                <Text className="text-gray-400">{value.replace('.', ',')}</Text>
               )}
             />
           </View>
@@ -129,7 +129,7 @@ export function BasketScreen() {
               displayType="text"
               prefix="$"
               renderText={(value) => (
-                <Text className="font-extrabold text-gray-400">{value}</Text>
+                <Text className="font-extrabold text-gray-400">{value.replace('.', ',')}</Text>
               )}
             />
           </View>
