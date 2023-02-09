@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TransitionSpecs } from "@react-navigation/stack";
 import { BasketScreen } from "../screens/BasketScreen";
+import { CategoryScreen } from "../screens/CategoriesScreen";
 import { DeliveryScreen } from "../screens/DeliveryScreen";
 import { HomeScreen } from "../screens/HomeScreen";
 import { PreparingOrderScreen } from "../screens/PreparingOrderScreen";
@@ -13,6 +14,7 @@ export function AppRoutes() {
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="home" component={HomeScreen} />
       <Screen name="restaurant" component={RestaurantScreen} />
+      <Screen name="category" component={CategoryScreen} />
       <Screen
         name="basket"
         component={BasketScreen}
