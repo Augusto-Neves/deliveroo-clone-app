@@ -1,16 +1,15 @@
+import sanityClient from "../services/sanity";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Image, ScrollView, Text, TextInput, View } from "react-native";
+import { ScrollView, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   AdjustmentsVerticalIcon,
-  ChevronDownIcon,
-  UserIcon,
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
 import { Categories } from "../components/Categories";
 import { FeaturedRow } from "../components/FeaturedRow";
-import sanityClient from "../services/sanity";
+import { Header } from "../components/Header";
 
 export function HomeScreen() {
   const navigation = useNavigation();
@@ -38,24 +37,7 @@ export function HomeScreen() {
   return (
     <SafeAreaView className="bg-white pt-5 mb-32">
       {/* Header */}
-      <View className="flex-row pb-3 items-center space-x-2 px-4">
-        <Image
-          source={{
-            uri: "https://links.papareact.com/wru",
-          }}
-          className="h-7 w-7 bg-gray-300 p-4 rounded-full"
-        />
-
-        <View className="flex-1">
-          <Text className="font-bold text-gray-400 text-xs">Deliver Now!</Text>
-          <Text className="font-bold text-xl">
-            Current Location
-            <ChevronDownIcon size={20} color="#00CCBB" />
-          </Text>
-        </View>
-
-        <UserIcon size={35} color="#00CCBB" />
-      </View>
+      <Header />
 
       {/* Search */}
       <View className="flex-row items-center space-x-2 pb-2 mx-4 px-2">

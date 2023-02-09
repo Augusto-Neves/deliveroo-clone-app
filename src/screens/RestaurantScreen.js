@@ -36,18 +36,20 @@ export function RestaurantScreen() {
   const items = useSelector(selectedBasketItems);
 
   useEffect(() => {
-    dispatch(setRestaurant({
-      id,
-      imgUrl,
-      title,
-      rating,
-      genre,
-      address,
-      short_description,
-      dishes,
-      long,
-      lat,
-    }))
+    dispatch(
+      setRestaurant({
+        id,
+        imgUrl,
+        title,
+        rating,
+        genre,
+        address,
+        short_description,
+        dishes,
+        long,
+        lat,
+      })
+    );
   }, [dispatch]);
 
   return (
