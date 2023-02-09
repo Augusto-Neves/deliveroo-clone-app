@@ -26,7 +26,7 @@ export function RestaurantResumeCard({ restaurants }) {
   return (
     <SafeAreaView>
       <ScrollView
-        className="flex-row divide-y divide-gray-400"
+        className="flex-row divide-y divide-gray-200"
         contentContainerStyle={{
           flex: 1,
         }}
