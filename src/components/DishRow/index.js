@@ -1,4 +1,5 @@
 import CurrencyFormat from "react-currency-format";
+import Toast from "react-native-toast-message";
 import { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid";
@@ -8,7 +9,6 @@ import {
   addItemToBasket,
   removeItemFromBasket,
   selectedBasketItemsWithId,
-  selectedBasketItems,
 } from "../../store/reducers/basketSlice";
 
 export function DishRow({ id, title, price, short_description, imageUrl }) {
@@ -23,15 +23,27 @@ export function DishRow({ id, title, price, short_description, imageUrl }) {
     dispatch(
       addItemToBasket({ id, title, price, short_description, imageUrl })
     );
+    Toast.show({
+      type: "success",
+      text1: "Item added to basket",
+      text2: `${title}`,
+      visibilityTime: 2000,
+    });
   }
 
   function handleRemoveItemFromTheBasket() {
     if (!itensOnBasket.length) return;
     dispatch(removeItemFromBasket({ id }));
+    Toast.show({
+      type: "info",
+      text1: "Item removed",
+      text2: `${title}`,
+      visibilityTime: 2000,
+    });
   }
 
   return (
-    <>     
+    <>
       <TouchableOpacity
         activeOpacity={0.7}
         className={`bg-white pb-4 pr-2 border border-gray-200 ${
