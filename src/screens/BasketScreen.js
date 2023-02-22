@@ -12,6 +12,7 @@ import { selectRestaurant } from "../store/reducers/restaurantSlice";
 import { XCircleIcon } from "react-native-heroicons/solid";
 import { urlFor } from "../services/sanity";
 import CurrencyFormat from "react-currency-format";
+import Toast from "react-native-toast-message";
 
 export function BasketScreen() {
   const navigation = useNavigation();
@@ -19,6 +20,7 @@ export function BasketScreen() {
   const restaurant = useSelector(selectRestaurant);
   const totalPriceItems = useSelector(selectedBasketItemsValue);
   const dispatch = useDispatch();
+
   const [groupedItemsInTheBasket, setGroupedItemsInTheBasket] = useState([]);
 
   useMemo(() => {
@@ -27,6 +29,14 @@ export function BasketScreen() {
       return results;
     }, {});
 
+    if (items.length === 0) {
+      navigation.goBack();
+      Toast.show({
+        type: "error",
+        text1: "Your basket is empty",
+        text2: "Please add an item into your basket",
+      });
+    }
     setGroupedItemsInTheBasket(groupedItems);
   }, [items]);
 
@@ -81,7 +91,9 @@ export function BasketScreen() {
                   displayType="text"
                   prefix="$"
                   renderText={(value) => (
-                    <Text className=" text-gray-600">{value.replace('.', ',')}</Text>
+                    <Text className=" text-gray-600">
+                      {value.replace(".", ",")}
+                    </Text>
                   )}
                 />
               </Text>
@@ -105,7 +117,7 @@ export function BasketScreen() {
               displayType="text"
               prefix="$"
               renderText={(value) => (
-                <Text className="text-gray-400">{value.replace('.', ',')}</Text>
+                <Text className="text-gray-400">{value.replace(".", ",")}</Text>
               )}
             />
           </View>
@@ -117,7 +129,7 @@ export function BasketScreen() {
               displayType="text"
               prefix="$"
               renderText={(value) => (
-                <Text className="text-gray-400">{value.replace('.', ',')}</Text>
+                <Text className="text-gray-400">{value.replace(".", ",")}</Text>
               )}
             />
           </View>
@@ -129,7 +141,9 @@ export function BasketScreen() {
               displayType="text"
               prefix="$"
               renderText={(value) => (
-                <Text className="font-extrabold text-gray-400">{value.replace('.', ',')}</Text>
+                <Text className="font-extrabold text-gray-400">
+                  {value.replace(".", ",")}
+                </Text>
               )}
             />
           </View>
